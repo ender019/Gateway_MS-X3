@@ -1,0 +1,7 @@
+routes:
+    user:
+        - service:
+            uri: http://localhost:8080
+    post:
+        - service:
+            uri: http://localhost:8081
