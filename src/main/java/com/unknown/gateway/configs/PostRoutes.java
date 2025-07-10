@@ -21,6 +21,7 @@ public class PostRoutes {
         log.debug("Post routes: {}", settings.getPost().stream().map(RoutesSettings.Service::getUri).toList());
         RouteLocatorBuilder.Builder rb = builder.routes();
         settings.getPost().forEach(service -> rb.route( p -> p.path("/post/**").uri(service.getUri()) ));
+        settings.getPost().forEach(service -> rb.route( p -> p.path("/comment/**").uri(service.getUri()) ));
         return rb.build();
     }
 }

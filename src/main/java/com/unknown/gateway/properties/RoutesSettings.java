@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class RoutesSettings {
     private List<ServiceWrapper> user;
     private List<ServiceWrapper> post;
+    private List<ServiceWrapper> auth;
 
     @Getter
     @Setter
@@ -34,6 +35,12 @@ public class RoutesSettings {
 
     public List<Service> getPost() {
         return post.stream()
+                .map(ServiceWrapper::getService)
+                .collect(Collectors.toList());
+    }
+
+    public List<Service> getAuth() {
+        return auth.stream()
                 .map(ServiceWrapper::getService)
                 .collect(Collectors.toList());
     }

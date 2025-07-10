@@ -20,7 +20,10 @@ public class UserRoutes {
     public RouteLocator usersRoutes(RouteLocatorBuilder builder, RoutesSettings settings) {
         log.debug("User routes: {}", settings.getUser().stream().map(RoutesSettings.Service::getUri).toList());
         RouteLocatorBuilder.Builder rb = builder.routes();
-        settings.getUser().forEach(service -> rb.route( p -> p.path("/user/**").uri(service.getUri()) ));
+        settings.getUser().forEach(service -> rb
+                .route( p -> p.path("/user/**").uri(service.getUri()) )
+                .route( p -> p.path("/subscribe/**").uri(service.getUri()) )
+        );
         return rb.build();
     }
 }
