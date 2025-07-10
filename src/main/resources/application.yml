@@ -1,12 +1,30 @@
 spring:
+    application:
+        name: X3_Gateway
     config:
         import:
             - optional:file:.env[.properties]
             - classpath:routes.yml
         activate:
             on-profile: default
-    application:
-        name: X3_Gateway
+
+    security:
+        keycloak:
+            realm: ${REALM}
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: ${KEYCLOAK_URI}/realms/${REALM}
+            client:
+                provider:
+                    keycloak:
+                        issuer-uri: ${KEYCLOAK_URI}/realms/${REALM}
+                        user-name-attribute: preferred_username
+                registration:
+                    keycloak:
+                        client-id: ${CLIENT_ID}
+                        client-secret: ${SECRET}
+                        scope: openid
 
 server:
     port: ${PORT}

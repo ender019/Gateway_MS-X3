@@ -5,3 +5,6 @@ routes:
     post:
         - service:
             uri: http://localhost:8081
+    auth:
+        - service:
+            uri: http://localhost:8079
