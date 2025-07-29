@@ -12,7 +12,7 @@
     <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>X3_Gateway</name>
-    <description>X3_Gateway</description>
+    <description>Gateway MS - функции маршрутизации и авторизации</description>
     <url/>
     <licenses>
         <license/>

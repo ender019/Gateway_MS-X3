@@ -32,7 +32,9 @@ server:
 logging:
     level:
         org.springframework: INFO
-        com.unknown.gateway: DEBUG
+#        org.springframework.security: DEBUG
+#        org.springframework.cloud.gateway: TRACE
+        com.unknown.gateway: TRACE
     file:
         name: src/main/resources/logging/user-ms.log
     logback:
