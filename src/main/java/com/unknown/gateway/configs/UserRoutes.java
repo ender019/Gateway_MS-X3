@@ -21,6 +21,14 @@ public class UserRoutes {
         log.debug("User routes: {}", settings.getUser().stream().map(RoutesSettings.Service::getUri).toList());
         RouteLocatorBuilder.Builder rb = builder.routes();
         settings.getUser().forEach(service -> rb
+                .route( p -> p.path("/user")
+                        .filters(
+                                f -> f.setPath("/realms/X3_Project/account")
+                                        .addRequestParameter("userProfileMetadata","false")
+                                        .addRequestHeader("Accept", "application/json")
+                        ).uri("http://localhost:8079")
+
+                )
                 .route( p -> p.path("/user/**").uri(service.getUri()) )
                 .route( p -> p.path("/subscribe/**").uri(service.getUri()) )
         );

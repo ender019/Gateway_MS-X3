@@ -17,7 +17,7 @@ public class AuthRoutes {
     private String realm;
 
     static {
-        log.debug("PostRoutes initialized");
+        log.debug("AuthRoutes initialized");
     }
 
     @Bean
@@ -37,6 +37,10 @@ public class AuthRoutes {
                         p -> p.path("/auth/logout")
                             .filters(f -> f.setPath("/realms/%s/protocol/openid-connect/logout".formatted(realm)))
                             .uri(service.getUri())
+                ).route(
+                        p -> p.path("/auth/**")
+                                .filters(f -> f.stripPrefix(1))
+                                .uri(service.getUri())
         ));
         return rb.build();
     }
