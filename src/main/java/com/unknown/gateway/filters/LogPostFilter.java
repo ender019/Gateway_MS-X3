@@ -10,12 +10,12 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
-@Order(0)
-public class LogPreFilter implements GlobalFilter {
+@Order(1000)
+public class LogPostFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.trace("Log Pre Filter executed");
-        log.debug("Input URI: {}", exchange.getRequest().getURI());
+        log.trace("Log Post Filter executed");
+        log.debug("Output URI: {}", exchange.getRequest().getURI());
         return chain.filter(exchange);
     }
 }
