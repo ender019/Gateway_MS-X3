@@ -26,17 +26,28 @@ public class AuthRoutes {
         RouteLocatorBuilder.Builder rb = builder.routes();
         settings.getAuth().forEach(service -> rb
                 .route(
-                    p -> p.path("/auth/login")
-                            .filters(f -> f.setPath("/realms/%s/protocol/openid-connect/token".formatted(realm)))
-                            .uri(service.getUri())
+                        p -> p.path("/user")
+                                .filters(
+                                    f -> f.setPath("/realms/%s/account".formatted(realm))
+                                            .addRequestParameter("userProfileMetadata","false")
+                                            .setRequestHeader("Accept", "application/json")
+                                ).uri(service.getUri())
+                ).route(
+                        p -> p.path("/auth/login")
+                                .filters(f -> f.setPath("/realms/%s/protocol/openid-connect/token".formatted(realm)))
+                                .uri(service.getUri())
+                ).route(
+                        p -> p.path("/auth/signin")
+                                .filters(f -> f.setPath("/realms/%s/account".formatted(realm)))
+                                .uri(service.getUri())
                 ).route(
                         p -> p.path("/auth/signup")
-                            .filters(f -> f.setPath("/realms/%s/account".formatted(realm)))
-                            .uri(service.getUri())
+                                .filters(f -> f.setPath("/realms/%s/account".formatted(realm)))
+                                .uri(service.getUri())
                 ).route(
                         p -> p.path("/auth/logout")
-                            .filters(f -> f.setPath("/realms/%s/protocol/openid-connect/logout".formatted(realm)))
-                            .uri(service.getUri())
+                                .filters(f -> f.setPath("/realms/%s/protocol/openid-connect/logout/logout-confirm".formatted(realm)))
+                                .uri(service.getUri())
                 ).route(
                         p -> p.path("/auth/**")
                                 .filters(f -> f.stripPrefix(1))
