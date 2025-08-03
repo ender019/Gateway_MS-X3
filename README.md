@@ -97,12 +97,9 @@ src/
     ├── java/
     │   ├── com/
     │   │   └── unknown/
-    │   │       ├── advices/      # REST контроллеры
-    │   │       ├── controllers/  # REST контроллеры
-    │   │       ├── models/       # Сущности БД
-    │   │       ├── repositories/ # Интерфейсы JPA
-    │   │       ├── schemas/      # Data Transfer Objects
-    │   │       └── services/     # Бизнес-логика
+    │   │       ├── configs/      # Конфигурации путей и сервисов
+    │   │       ├── filters/      # Кастомные фильтры
+    │   │       └── properties/   # ДТО для конфигурации
     │   └── resources/            # Конфиги и миграции
     └── test/                     # Тесты
 ```
