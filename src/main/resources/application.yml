@@ -26,6 +26,17 @@ spring:
                         client-secret: ${SECRET}
                         scope: openid
 
+#    data:
+#        redis:
+#            host: ${REDIS_HOST}
+#            port: ${REDIS_PORT}
+#            password: ${REDIS_PASSWORD}
+#    cache:
+#        type: redis
+#        redis:
+#            time-to-live: ${REDIS_TIME}
+
+
 server:
     port: ${PORT}
 

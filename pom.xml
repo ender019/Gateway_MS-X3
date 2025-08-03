@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.unknown</groupId>
     <artifactId>gateway</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
     <name>X3_Gateway</name>
     <description>Gateway MS - функции маршрутизации и авторизации</description>
     <url/>
